@@ -6,10 +6,10 @@ docker-machine start
 source /Users/didier/.docker/machine/machines/dev2/dev2.sh
 
 ######### clone e2e
-git clone https://github.com/giovanettid/e2etest.git
+git clone https://github.com/giovanettid/e2etest.git && cd e2etest
 
 ######## e2e test
-scripts/e2e.sh
+chmod +x scripts/e2e.sh && scripts/e2e.sh 
 
 ######## stop machine
 docker-machine stop

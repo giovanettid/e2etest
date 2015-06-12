@@ -3,8 +3,10 @@ git clone https://github.com/giovanettid/springbatch-sample.git
 git clone https://github.com/giovanettid/spring-boot-sample.git
 git clone https://github.com/giovanettid/configuration.git
 
-########## build
+######### e2e path
 e2e=$(pwd)
+
+########## build
 cd $e2e/springbatch-sample && mvn clean package
 
 cd $e2e/spring-boot-sample && mvn clean package
