@@ -5,7 +5,7 @@ chmod +x scripts/check/check_restapp.sh
 chmod +x scripts/docker/docker_postintegration_test.sh
 
 ######## build
-#scripts/build/build_alljars.sh
+scripts/build/build_alljars.sh
 
 ######## pre integration-test
 scripts/docker/docker_preintegration_test.sh
