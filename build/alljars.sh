@@ -1,3 +1,4 @@
+#!/bin/bash
 
 cd $work/springbatch-sample && mvn clean package
 
