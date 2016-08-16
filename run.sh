@@ -1,9 +1,10 @@
 #!/bin/bash
+work=$(dirname $(pwd))
 
-build/alljars.sh
+build/alljars.sh $work
 
-pre-integration/docker-run.sh
+pre-integration/docker-run.sh $work $(pwd)
 
-test/restapp.sh
+test/restapp.sh $work
 
 post-integration/docker-stop.sh
