@@ -1,7 +1,7 @@
 #!/bin/bash
 work=$(dirname $(pwd))
 
-build/alljars.sh $work
+build/allimages.sh $work
 
 pre-integration/docker-run.sh $work $(pwd)
 
