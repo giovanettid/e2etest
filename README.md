@@ -1,19 +1,12 @@
-#### End-to-end test mysql database & spring boot batch & spring boot restapp 
-
-###### start docker machine
-docker-machine start
-
-###### clone 
-git clone https://github.com/giovanettid/e2etest.git
-
+####### clone 
 git clone https://github.com/giovanettid/springbatch-sample.git
 
 git clone https://github.com/giovanettid/spring-boot-sample.git
 
-git clone https://github.com/giovanettid/configuration.git
+git clone https://github.com/giovanettid/configuration.git && cd configuration && git checkout config-with-sql-schemas && cd ..  
 
-###### run e2e test
-cd e2etest && source env.sh && ./run.sh
+git clone https://github.com/giovanettid/e2etest.git && cd e2etest
 
-###### stop docker machine
-docker-machine stop
+####### run e2e test
+source env.sh && ./run.sh
+
