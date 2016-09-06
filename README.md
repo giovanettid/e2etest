@@ -8,7 +8,7 @@ git clone https://github.com/giovanettid/configuration.git
 
 git clone https://github.com/giovanettid/mysql-sample.git
 
-git clone https://github.com/giovanettid/e2etest.git && cd e2etest && git checkout e2e-dockerfile
+git clone https://github.com/giovanettid/e2etest.git && cd e2etest && git checkout e2e-docker-maven
 
 ####### run e2e test
 ./run.sh
