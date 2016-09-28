@@ -1,16 +1,18 @@
 #!/bin/bash
-work=$(dirname $(pwd))
-e2e=$(pwd)
 
 #build
+work=$(dirname $(pwd))
 build/allimages.sh $work/mysql-sample $work/springbatch-sample $work/spring-boot-sample
 
-#pre e2e
-cd $e2e && rm -rf log && mkdir log
-pre-integration/docker-run.sh $e2e/pre-integration/input $e2e/log $work/configuration/properties
+#pre e2e : deploy
+export ANSIBLE_HOSTS=/etc/ansible/hosts
+ansible-playbook deploy/deploy.yml --extra-vars "log=$(pwd)/log properties_dest=$(pwd)/properties"
 
-#e2e
+#pre e2e : prepare
+docker run --rm  -v $(pwd)/properties:/properties -v $(pwd)/pre-e2e/input:/input springbatch-sample > log/batch.log
+
+#e2e : test
 test/restapp.sh
 
-#post e2e
-post-integration/docker-stop.sh
+#post e2e : clean
+post-e2e/docker-stop.sh

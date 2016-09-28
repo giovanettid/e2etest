@@ -1,0 +1,5 @@
+- name: download {{ name }} properties
+  get_url:
+    url: "{{ properties_url }}/{{ name }}.properties"
+    dest: "{{ properties_dest }}/{{ name }}.properties"
+    force: yes

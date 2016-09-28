@@ -1,0 +1,6 @@
+- name: wait {{ image }} up
+  shell: docker inspect --format={{ '{{' }}.State.Health.Status{{ '}}' }} {{ image }}
+  register: result
+  until: result.stdout == "healthy"
+  retries: 30
+  delay: 5

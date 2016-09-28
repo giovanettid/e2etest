@@ -1,0 +1,39 @@
+- name: run mysql and webapp docker containers
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+
+  - name: create log directory
+    file: path={{ log }} state=absent
+    file: path={{ log }} state=directory
+
+  - name: create properties directory
+    file: path={{ properties_dest }} state=directory
+
+  - include: download.yml name=application
+
+  - include: download.yml name=batch
+
+  - name: run mysql
+    docker:
+      name: mysqldb
+      image: mysql-sample
+      ports: "3306:3306"
+      env:
+        MYSQL_ROOT_PASSWORD: dba
+      state: started
+
+  - include: wait.yml image=mysqldb
+
+  - name: run webapp
+    docker:
+      name: webapp
+      image: spring-boot-sample
+      ports: "8080:8080"
+      volumes:
+      - "{{ log }}:/var/log"
+      - "{{ properties_dest }}:/properties"
+      state: started
+
+  - include: wait.yml image=webapp
