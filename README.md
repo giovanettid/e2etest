@@ -1,6 +1,7 @@
 
 ####### configure ansible 
 editer /etc/ansible/hosts
+
 [local]
 127.0.0.1 properties_url=https://raw.githubusercontent.com/giovanettid/configuration/master/properties
 
