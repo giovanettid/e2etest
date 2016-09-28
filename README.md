@@ -13,7 +13,7 @@ git clone https://github.com/giovanettid/spring-boot-sample.git
 
 git clone https://github.com/giovanettid/mysql-sample.git
 
-git clone https://github.com/giovanettid/e2etest.git && cd e2etest && git checkout e2e-docker-maven
+git clone https://github.com/giovanettid/e2etest.git && cd e2etest && git checkout e2e-docker-ansible
 
 ####### run e2e test
 ./run.sh
