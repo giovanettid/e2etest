@@ -1,0 +1,144 @@
+{
+	"variables": [],
+	"info": {
+		"name": "restapp",
+		"_postman_id": "177542ad-5fa0-3eeb-56ba-0b2be29dec75",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "personnes/search?nom=nom1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"console.log(responseBody);",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"size\"] = jsonData.length === 1;",
+							"tests[\"nom\"] = jsonData[0].nom === \"nom1\";",
+							"tests[\"prenom\"] = jsonData[0].prenom === \"prenom1\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{restapp.host}}:8080/personnes/search?nom=nom1",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "personnes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 201\"] = responseCode.code === 201;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{restapp.host}}:8080/personnes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nom\":\"nom3\",\"prenom\":\"prenom3\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "personnes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 201\"] = responseCode.code === 201;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{restapp.host}}:8080/personnes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nom\":\"nom3\",\"prenom\":\"prenom4\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "personnes/search?nom=nom3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"console.log(responseBody);",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"size\"] = jsonData.length === 2;",
+							"tests[\"nom\"] = jsonData[0].nom === \"nom3\";",
+							"tests[\"nom\"] = jsonData[1].nom === \"nom3\";",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{restapp.host}}:8080/personnes/search?nom=nom3",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

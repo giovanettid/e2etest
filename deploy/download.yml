@@ -1,5 +1,5 @@
-- name: download {{ name }} properties
+- name: download {{ dir }}/{{ name }} configuration
   get_url:
-    url: "{{ properties_url }}/{{ name }}.properties"
-    dest: "{{ properties_dest }}/{{ name }}.properties"
+    url: "{{ configurations_url }}/{{ dir }}/{{ name }}"
+    dest: "{{ configurations_dest }}/{{ name }}"
     force: yes

@@ -4,7 +4,7 @@ editer /etc/ansible/hosts
 
 [local]
 
-127.0.0.1 properties_url=https://raw.githubusercontent.com/giovanettid/configuration/master/properties
+127.0.0.1 configurations_url=https://raw.githubusercontent.com/giovanettid/configuration/master
 
 ####### clone 
 git clone https://github.com/giovanettid/springbatch-sample.git

@@ -8,12 +8,14 @@
     file: path={{ log }} state=absent
     file: path={{ log }} state=directory
 
-  - name: create properties directory
-    file: path={{ properties_dest }} state=directory
+  - name: create configurations directory
+    file: path={{ configurations_dest }} state=directory
 
-  - include: download.yml name=application
+  - include: download.yml dir=properties name=application.properties
 
-  - include: download.yml name=batch
+  - include: download.yml dir=properties name=batch.properties
+
+  - include: download.yml dir=json name=restapp.postman_environment.json
 
   - name: run mysql
     docker:
@@ -33,7 +35,7 @@
       ports: "8080:8080"
       volumes:
       - "{{ log }}:/var/log"
-      - "{{ properties_dest }}:/properties"
+      - "{{ configurations_dest }}:/properties"
       state: started
 
   - include: wait.yml image=webapp
