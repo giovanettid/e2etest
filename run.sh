@@ -5,7 +5,7 @@ work=$(dirname $(pwd))
 build/allimages.sh $work/mysql-sample $work/springbatch-sample $work/spring-boot-sample
 
 #pre e2e : deploy
-export ANSIBLE_HOSTS=/etc/ansible/hosts
+export ANSIBLE_INVENTORY=/etc/ansible/hosts
 ansible-playbook deploy/deploy.yml --extra-vars "log=$(pwd)/log configurations_dest=$(pwd)/configurations"
 
 #pre e2e : prepare

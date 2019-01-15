@@ -4,8 +4,10 @@
 
   tasks:
 
-  - name: create log directory
+  - name: delete log directory
     file: path={{ log }} state=absent
+ 
+  - name: create log directory
     file: path={{ log }} state=directory
 
   - name: create configurations directory
@@ -18,7 +20,7 @@
   - include: download.yml dir=json name=restapp.postman_environment.json
 
   - name: run mysql
-    docker:
+    docker_container:
       name: mysqldb
       image: mysql-sample
       ports: "3306:3306"
@@ -29,7 +31,7 @@
   - include: wait.yml image=mysqldb
 
   - name: run webapp
-    docker:
+    docker_container:
       name: webapp
       image: spring-boot-sample
       ports: "8080:8080"
